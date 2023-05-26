@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import Box from "./Box";
 
 const Content = () => {
-  const [users, setUsers] = useState([]);
+  const [pizzas, setPizzas] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
-  const getUsers = async () => {
-    const res = await fetch("http://localhost:3000/user", {
+  const getPizzas = async () => {
+    const res = await fetch("http://localhost:3000/pizza", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -15,18 +15,18 @@ const Content = () => {
       method: "GET",
     });
     const data = await res.json();
-    setUsers(data);
+    setPizzas(data);
     setLoaded(true);
   };
 
   useEffect(() => {
-    getUsers();
+    getPizzas();
   }, []);
 
   if (!loaded) {
     return (
       <>
-        <p>Users are loading...</p>
+        <p>pizzas are loading...</p>
       </>
     );
   }
@@ -37,8 +37,8 @@ const Content = () => {
           Vytvořit uživatele
         </button>
       </Link>
-      {users.result.map((user) => (
-        <Box id={user.id} name={user.name} age={user.age} image={user.image} />
+      {pizzas.result.map((pizza) => (
+        <Box id={pizza.id} name={pizza.name} price={pizza.price} ingredients={pizza.ingredients} />
       ))}
     </>
   );

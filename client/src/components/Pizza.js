@@ -4,9 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Pizza = (props) => {
     const navigate = useNavigate();
-
-  const deletePizza = async () => {
-    const res = fetch(`http://localhost:3000/pizza/${props.id}`, {
+    const deletePizza = async () => {
+      const res = await fetch(`http://localhost:3000/pizza/${props.id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
@@ -15,16 +14,11 @@ const Pizza = (props) => {
     navigate(0)
   }
 
-
-
   const handleDelete = () => {
     deletePizza()
   }
 
-
-
   return (
-    
     <div className='tempalate-page'>
         <Link to={`pizza/${props.id}`} className="column">
             <div className='tempalate-content'>
