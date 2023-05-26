@@ -1,0 +1,43 @@
+.tempalate-page {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+
+.tempalate-content {
+    width: 85%;
+    height: 250px;
+    background-color: rgb(182, 182, 182);
+    box-shadow: 10px 10px 10px 10px white;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+}
+
+.template-tittle{
+    width: 250px;
+    height: 90px;
+    background-color: aqua;
+}
+
+.template-ing {
+    width: 560px;
+    height: 90px;
+    background-color: red;
+}
+
+.template-price {
+    width: 360px;
+    height: 65px;
+    background-color: yellow;
+}
+
+.template-sale{
+    display: flex;
+}
+
+.template-button {
+    height: 50px;
+    margin: auto;
+    width: 200px;
+}
