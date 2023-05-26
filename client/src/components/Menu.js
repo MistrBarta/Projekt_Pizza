@@ -1,15 +1,12 @@
 import React from "react";
 import "../Styles/Menu.css"
-import Template from "./Template";
+import Pizza from "./Pizza.js";
 
 
  function Menu(){
     return(
         <div>
-            <Template/>
-            <Template/>
-            <Template/>
-            <Template/>
+            <Pizza/>
         </div>
     );
 }
