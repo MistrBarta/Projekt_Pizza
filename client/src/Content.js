@@ -1,10 +1,23 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Box from "./Box";
+import BoxPizza from "./BoxPizza";
 
 const Content = () => {
+  const [users, setUsers] = useState([]);
   const [pizzas, setPizzas] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
+  const getUsers = async () => {
+    const res = await fetch("http://localhost:3000/user", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "GET",
+    });
+    const data = await res.json();
+    setUsers(data);
+    setLoaded(true);
+  };
 
   const getPizzas = async () => {
     const res = await fetch("http://localhost:3000/pizza", {
@@ -20,25 +33,23 @@ const Content = () => {
   };
 
   useEffect(() => {
+    getUsers();
     getPizzas();
   }, []);
 
   if (!loaded) {
     return (
       <>
-        <p>pizzas are loading...</p>
+        <p>Users and Pizzas are loading...</p>
       </>
     );
   }
   return (
     <>
-      <Link to='create'>
-        <button className='button crud is-success'>
-          Vytvořit uživatele
-        </button>
-      </Link>
+
       {pizzas.result.map((pizza) => (
-        <Box id={pizza.id} name={pizza.name} price={pizza.price} ingredients={pizza.ingredients} />
+        <BoxPizza  id={pizza.id} name={pizza.name} publisher={pizza.price} author={pizza.ingredients} />
+        
       ))}
     </>
   );
